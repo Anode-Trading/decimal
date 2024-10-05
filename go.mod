@@ -1,4 +1,4 @@
-module github.com/anode-trading/decimal
+module github.com/Anode-Trading/decimal
 
 go 1.23
 
