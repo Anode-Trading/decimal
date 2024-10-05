@@ -43,3 +43,12 @@ func (d Decimal) DivRound(v Decimal, precision int32) Decimal {
 		DivRound(decimal.RequireFromString(v.String()), precision).
 		String())
 }
+
+func (d Decimal) Cmp(v Decimal) int {
+	return decimal.RequireFromString(d.String()).
+		Cmp(decimal.RequireFromString(v.String()))
+}
+
+func (d Decimal) Equal(v Decimal) bool {
+	return d.Cmp(v) == 0
+}
