@@ -60,3 +60,52 @@ func TestDecimal_Cmp(t *testing.T) {
 
 	assert.Equal(t, e, a.Cmp(b))
 }
+
+func TestDecimal_Equal(t *testing.T) {
+	a := New("154.94400000")
+	b := New("154.944")
+
+	assert.True(t, a.Equal(b))
+}
+
+func TestDecimal_GreaterThan(t *testing.T) {
+	a := New("154.94400000")
+	b := New("37.26837740")
+
+	assert.True(t, a.GreaterThan(b))
+}
+
+func TestDecimal_LessThan(t *testing.T) {
+	a := New("154.94400000")
+	b := New("37.26837740")
+
+	assert.True(t, b.LessThan(a))
+}
+
+func TestDecimal_GreaterThanOrEqual(t *testing.T) {
+	a := New("154.94400000")
+	b := New("37.26837740")
+
+	assert.True(t, a.GreaterThanOrEqual(b))
+
+	b = New("154.944")
+	assert.True(t, a.GreaterThanOrEqual(b))
+}
+
+func TestDecimal_LessThanOrEqual(t *testing.T) {
+	a := New("37.26837740")
+	b := New("154.94400000")
+
+	assert.True(t, a.LessThanOrEqual(b))
+
+	a = New("154.944")
+	assert.True(t, b.LessThanOrEqual(a))
+}
+
+func TestDecimal_IsZero(t *testing.T) {
+	a := New("0")
+	b := New("154.944")
+
+	assert.True(t, a.IsZero())
+	assert.False(t, b.IsZero())
+}
