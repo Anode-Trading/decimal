@@ -52,3 +52,23 @@ func (d Decimal) Cmp(v Decimal) int {
 func (d Decimal) Equal(v Decimal) bool {
 	return d.Cmp(v) == 0
 }
+
+func (d Decimal) GreaterThan(v Decimal) bool {
+	return d.Cmp(v) == 1
+}
+
+func (d Decimal) LessThan(v Decimal) bool {
+	return d.Cmp(v) == -1
+}
+
+func (d Decimal) GreaterThanOrEqual(v Decimal) bool {
+	return d.Cmp(v) != -1
+}
+
+func (d Decimal) LessThanOrEqual(v Decimal) bool {
+	return d.Cmp(v) != 1
+}
+
+func (d Decimal) IsZero() bool {
+	return d.Cmp(New("0")) == 0
+}
