@@ -13,6 +13,15 @@ func TestNew(t *testing.T) {
 	assert.Equal(t, s, d.String())
 }
 
+func TestNewFromFloat(t *testing.T) {
+	f := 123.456
+	e := "123.456"
+
+	d := NewFromFloat(f)
+
+	assert.Equal(t, e, d.String())
+}
+
 func TestDecimal_Add(t *testing.T) {
 	a := New("123.456")
 	b := New("789.123")
