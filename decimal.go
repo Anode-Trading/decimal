@@ -14,6 +14,10 @@ func New(v string) Decimal {
 	return Decimal(v)
 }
 
+func NewFromFloat(v float64) Decimal {
+	return New(decimal.NewFromFloat(v).String())
+}
+
 func (d Decimal) Add(v Decimal) Decimal {
 	return New(decimal.RequireFromString(d.String()).
 		Add(decimal.RequireFromString(v.String())).
