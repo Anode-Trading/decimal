@@ -145,6 +145,17 @@ func TestUnmarshal(t *testing.T) {
 	assert.Equal(t, exp, d)
 }
 
+func TestSumMap(t *testing.T) {
+	a := map[string]Decimal{
+		"1": New("1.1"),
+		"2": New("2.02"),
+		"3": New("3.003"),
+	}
+	e := New("6.123")
+
+	assert.Equal(t, e, SumMap(a))
+}
+
 type s struct {
 	Decimal Decimal `json:"decimal"`
 }
