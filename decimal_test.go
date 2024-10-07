@@ -1,6 +1,7 @@
 package decimal
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -117,4 +118,33 @@ func TestDecimal_IsZero(t *testing.T) {
 
 	assert.True(t, a.IsZero())
 	assert.False(t, b.IsZero())
+}
+
+func TestMarshal(t *testing.T) {
+	exp := `{"decimal":"123.456"}`
+	d := s{
+		Decimal: "123.456",
+	}
+
+	b, err := json.Marshal(d)
+
+	assert.NoError(t, err)
+	assert.Equal(t, exp, string(b))
+}
+
+func TestUnmarshal(t *testing.T) {
+	payload := `{"decimal":"123.456"}`
+	exp := s{
+		Decimal: "123.456",
+	}
+
+	var d s
+	err := json.Unmarshal([]byte(payload), &d)
+
+	assert.NoError(t, err)
+	assert.Equal(t, exp, d)
+}
+
+type s struct {
+	Decimal Decimal `json:"decimal"`
 }
