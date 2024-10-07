@@ -76,3 +76,11 @@ func (d Decimal) LessThanOrEqual(v Decimal) bool {
 func (d Decimal) IsZero() bool {
 	return d.Cmp(New("0")) == 0
 }
+
+func SumMap[T comparable](m map[T]Decimal) Decimal {
+	sum := New("0")
+	for _, v := range m {
+		sum = sum.Add(v)
+	}
+	return sum
+}
